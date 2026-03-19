@@ -7,6 +7,8 @@ function Workouts() {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [editingWorkout, setEditingWorkout] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("workouts", JSON.stringify(workouts));
   }, [workouts]);
@@ -20,18 +22,33 @@ function Workouts() {
     setWorkouts(updated);
   }
 
+  function updateWorkout(updatedWorkout) {
+    const updatedList = workouts.map((w) =>
+      w.id === updatedWorkout.id ? updatedWorkout : w
+    );
+    setWorkouts(updatedList);
+    setEditingWorkout(null); 
+  }
+
   return (
     <div>
       <h1>Workouts Page</h1>
 
-      <WorkoutForm addWorkout={addWorkout} />
+      <WorkoutForm 
+      addWorkout={addWorkout} 
+      updateWorkout={updateWorkout}
+      editingWorkout={editingWorkout}
+      />
 
       <ul>
         {workouts.map((w) => (
           <li key={w.id}>
-            {w.name} - {w.sets} sets x {w.reps} reps
-            <button onClick={() => deleteWorkout(w.id)}>Delete</button>
-          </li>
+          {w.name} - {w.sets} sets x {w.reps} reps
+        
+          <button onClick={() => deleteWorkout(w.id)}>Delete</button>
+        
+          <button onClick={() => setEditingWorkout(w)}>Edit</button>
+        </li>
         ))}
       </ul>
     </div>

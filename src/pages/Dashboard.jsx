@@ -26,16 +26,18 @@ function Dashboard() {
       </div>
 
       <p>Record your steps and daily water consumption</p>
+      <label htmlFor="steps">Steps:</label>
       <input
-        type="number"
-        placeholder="Steps"
-        value={steps}
-        onChange={(e) => setSteps(e.target.value)}
+         id="steps"
+         type="number"
+         value={steps}
+         onChange={(e) => setSteps(e.target.value)}
       />
 
+      <label htmlFor="water">Water (cups):</label>
       <input
+        id="water"
         type="number"
-        placeholder="Water (cups)"
         value={water}
         onChange={(e) => setWater(e.target.value)}
       />

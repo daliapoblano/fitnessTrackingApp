@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useCallback } from "react";
 import WorkoutForm from "../features/WorkoutForm.jsx";
 import styles from "./Workouts.module.css"; 
 
@@ -14,9 +15,9 @@ function Workouts() {
     localStorage.setItem("workouts", JSON.stringify(workouts));
   }, [workouts]);
 
-  function addWorkout(workout) {
-    setWorkouts([...workouts, workout]);
-  }
+  const addWorkout = useCallback((workout) => {
+    setWorkouts(prev => [...prev, workout]);
+  }, [setWorkouts]);
 
   function deleteWorkout(id) {
     const updated = workouts.filter((w) => w.id !== id);

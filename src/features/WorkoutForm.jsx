@@ -1,31 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function WorkoutForm({ addWorkout }) {
+function WorkoutForm({ addWorkout,updateWorkout, editingWorkout }) {
   const [name, setName] = useState("");
   const [reps, setReps] = useState("");
   const [sets, setSets] = useState("");
 
+  useEffect(() => {
+    if (editingWorkout) {
+      setName(editingWorkout.name);
+      setSets(editingWorkout.sets);
+      setReps(editingWorkout.reps);
+    }
+  }, [editingWorkout]);
+
   function handleSubmit(e) {
     e.preventDefault();
-
-    if (!name || !reps || !sets) {
-      alert("Please fill out all fields");
-      return;
-    }
-
-    const newWorkout = {
-      id: Date.now(),
+  
+    const workout = {
+      id: editingWorkout ? editingWorkout.id : Date.now(),
       name,
-      reps,
       sets,
+      reps,
     };
-
-    addWorkout(newWorkout);
-
-    // reset form
+  
+    if (editingWorkout) {
+      updateWorkout(workout);
+    } else {
+      addWorkout(workout);
+    }
+  
+    // clearing the form
     setName("");
-    setReps("");
     setSets("");
+    setReps("");
   }
 
   return (

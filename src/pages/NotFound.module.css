@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-color: #ffe6e6; 
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 6rem;
+    margin: 0;
+    color: #d32f2f;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+  
+  p {
+    margin: 10px 0 20px;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .homeButton {
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+  }
+  
+  .homeButton:hover {
+    background-color: #b71c1c;
+  }

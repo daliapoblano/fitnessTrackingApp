@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import styles from "./Dashboard.module.css";
 
 function Dashboard() {
   const [steps, setSteps] = useState(() => {
     return localStorage.getItem("steps") || "";
   });
-  
+
   const [water, setWater] = useState(() => {
     return localStorage.getItem("water") || "";
   });
@@ -15,9 +16,9 @@ function Dashboard() {
   }, [steps, water]);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-  
+    <div className={styles.container}>
+      <h1 className={styles.title}>Dashboard</h1>
+
       <h2>Daily Tracker</h2>
 
       <h3>Welcome back! 💪</h3>
@@ -29,7 +30,7 @@ function Dashboard() {
         value={steps}
         onChange={(e) => setSteps(e.target.value)}
       />
-  
+
       <input
         type="number"
         placeholder="Water (cups)"
@@ -60,7 +61,6 @@ function Dashboard() {
       ></iframe>
     </div>
   );
-
 }
 
 export default Dashboard;

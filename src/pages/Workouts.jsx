@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import WorkoutForm from "../features/WorkoutForm.jsx";
+import styles from "./Workouts.module.css"; 
 
 function Workouts() {
   const [workouts, setWorkouts] = useState(() => {
@@ -31,24 +32,22 @@ function Workouts() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Workouts Log</h1>
 
       <WorkoutForm 
-      addWorkout={addWorkout} 
-      updateWorkout={updateWorkout}
-      editingWorkout={editingWorkout}
+        addWorkout={addWorkout} 
+        updateWorkout={updateWorkout}
+        editingWorkout={editingWorkout}
       />
 
       <ul>
         {workouts.map((w) => (
           <li key={w.id}>
-          {w.name} - {w.sets} sets x {w.reps} reps
-        
-          <button onClick={() => deleteWorkout(w.id)}>Delete</button>
-        
-          <button onClick={() => setEditingWorkout(w)}>Edit</button>
-        </li>
+            {w.name} - {w.sets} sets x {w.reps} reps
+            <button onClick={() => deleteWorkout(w.id)}>Delete</button>
+            <button onClick={() => setEditingWorkout(w)}>Edit</button>
+          </li>
         ))}
       </ul>
     </div>

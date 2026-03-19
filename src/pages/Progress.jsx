@@ -1,5 +1,66 @@
+import { useState, useEffect } from "react";
+
 function Progress() {
-    return <h1>Progress</h1>;
-  }
+  const [startingWeight, setStartingWeight] = useState(() => {
+    return localStorage.getItem("startingWeight") || "";
+  });
   
-  export default Progress;
+  const [currentWeight, setCurrentWeight] = useState(() => {
+    return localStorage.getItem("currentWeight") || "";
+  });
+  
+  const [goalWeight, setGoalWeight] = useState(() => {
+    return localStorage.getItem("goalWeight") || "";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("startingWeight", startingWeight);
+    localStorage.setItem("currentWeight", currentWeight);
+    localStorage.setItem("goalWeight", goalWeight);
+  }, [startingWeight, currentWeight, goalWeight]);
+
+  const lost =
+  startingWeight && currentWeight
+    ? startingWeight - currentWeight
+    : 0;
+
+  const remaining =
+  currentWeight && goalWeight
+    ? currentWeight - goalWeight
+    : 0;
+
+  return (
+    <div>
+      <h1>Progress Page</h1>
+      <h2>Track your progress</h2>
+      <p>Tracking your progress is essential on your fitness journey! In this form you will share your goals and watch as you achieve them week by week!</p>
+      <input
+      type="number"
+      placeholder="Starting Weight"
+      value={startingWeight}
+      onChange={(e) => setStartingWeight(e.target.value)}
+      />
+
+     <input
+      type="number"
+      placeholder="Current Weight"
+      value={currentWeight}
+      onChange={(e) => setCurrentWeight(e.target.value)}
+     />
+
+     <input
+      type="number"
+      placeholder="Goal Weight"
+      value={goalWeight}
+      onChange={(e) => setGoalWeight(e.target.value)}
+     />
+
+     <h3>You’ve lost: {lost} lbs</h3>
+     <h3>Remaining: {remaining} lbs</h3>
+     {lost > 0 && <p>🔥 Keep going! You're making progress!</p>}
+     
+    </div>
+  );
+}
+
+export default Progress;

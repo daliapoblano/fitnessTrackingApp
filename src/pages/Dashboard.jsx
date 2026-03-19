@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./Dashboard.module.css";
+import cardStyles from "../shared/Card.module.css";
 
 function Dashboard() {
   const [steps, setSteps] = useState(() => {
@@ -19,9 +20,10 @@ function Dashboard() {
     <div className={styles.container}>
       <h1 className={styles.title}>Dashboard</h1>
 
-      <h2>Daily Tracker</h2>
-
-      <h3>Welcome back! 💪</h3>
+      <div className={cardStyles.card}>
+           <h2>Daily Tracker</h2>
+           <p>Track your steps and water intake here!</p>
+      </div>
 
       <p>Record your steps and daily water consumption</p>
       <input

@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #eee;
+    position: relative;
+  }
+  
+  .navLeft a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  
+  .active {
+    font-weight: bold;
+    border-bottom: 2px solid #3e2f5b;
+  }
+  
+  .navCenter {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .navCenter h2 {
+    margin: 0;
+    color: #3e2f5b;
+  }
+  
+  .navRight {
+    width: 100px;
+  }

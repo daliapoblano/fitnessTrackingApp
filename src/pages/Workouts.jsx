@@ -32,7 +32,7 @@ function Workouts() {
 
   return (
     <div>
-      <h1>Workouts Page</h1>
+      <h1>Workouts Log</h1>
 
       <WorkoutForm 
       addWorkout={addWorkout} 

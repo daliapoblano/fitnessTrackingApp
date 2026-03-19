@@ -37,7 +37,7 @@ function WorkoutForm({ addWorkout,updateWorkout, editingWorkout }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add Workout</h2>
+      <h2>Add Your Workout</h2>
 
       <input
         type="text"

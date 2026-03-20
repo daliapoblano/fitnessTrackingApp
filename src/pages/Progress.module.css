@@ -3,3 +3,10 @@
     min-height: 100vh;         
     padding: 20px;             
   }
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }

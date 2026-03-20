@@ -36,23 +36,26 @@ function Progress() {
       <h2>Track your progress</h2>
       <p>Tracking your progress is essential on your fitness journey! In this form you will share your goals and watch as you achieve them week by week!</p>
 
+      <label htmlFor="startingWeight">Starting Weight</label>
       <input
+        id="startingWeight"
         type="number"
-        placeholder="Starting Weight"
         value={startingWeight}
         onChange={(e) => setStartingWeight(e.target.value)}
       />
 
+      <label htmlFor="currentWeight">Current Weight</label>
       <input
-        type="number"
-        placeholder="Current Weight"
-        value={currentWeight}
-        onChange={(e) => setCurrentWeight(e.target.value)}
+         id="currentWeight"
+         type="number"
+         value={currentWeight}
+         onChange={(e) => setCurrentWeight(e.target.value)}
       />
 
+      <label htmlFor="goalWeight">Goal Weight</label>
       <input
+        id="goalWeight"
         type="number"
-        placeholder="Goal Weight"
         value={goalWeight}
         onChange={(e) => setGoalWeight(e.target.value)}
       />
